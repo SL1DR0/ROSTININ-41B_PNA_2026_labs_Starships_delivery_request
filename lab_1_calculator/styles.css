@@ -1,0 +1,111 @@
+/* опишем базовый стиль кнопки калькулятора */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background: #000000; /* черный фон страницы  */
+}
+
+.my-btn {
+    margin-right: 8px; /* отступ справа для воздуха между кнопками */
+    margin-top: 8px; /* отступ сверху для воздуха между кнопками */
+    width: 60px; /* задаем ширину кнопки */
+    height: 60px; /* задаем высоту кнопки */
+    border-radius: 4px; /* небольшое скругление углов для строгого стиля */
+    border: 1px solid #333; /* тонкая техническая рамка */
+    background: #111111; /* темно-серый фон кнопки */
+    color: #ffffff; /* белый текст */
+    font-size: 1.25rem; /* размер шрифта */
+    font-family: 'Inter', Arial, Helvetica, sans-serif; /* современный технический шрифт */
+    cursor: pointer; /* при наведении на кнопку курсор будет изменен со стрелки на 'указательный палец' */
+    user-select: none; /* отключаем возможность выделить текст внутри кнопки */
+    transition: all 0.2s ease; /* плавный переход для hover-эффектов */
+}
+
+/* hover - это состояние элемента, когда на него наведен курсор */
+.my-btn:hover {
+    background: #ffffff; /* инверсия: белый фон при наведении */
+    color: #000000; /* черный текст при наведении */
+    border-color: #ffffff; /* белая рамка при наведении */
+}
+
+/* active - это состояние активации элемента. В случае кнопки - нажатие на нее */
+.my-btn:active {
+    transform: scale(0.98); /* легкое уменьшение кнопки при нажатии */
+}
+
+/* селектор для кнопок первостепенных операций */
+.my-btn.primary {
+    background: #ffffff; /* белый фон для кнопок операций */
+    color: #000000; /* черный текст */
+    border-color: #ffffff; /* белая рамка */
+}
+
+/* hover для кнопок операций */
+.my-btn.primary:hover {
+    background: #3d3bff; /* синий акцент при наведении */
+    color: #ffffff; /* белый текст */
+    border-color: #3d3bff; /* синяя рамка */
+}
+
+/* active для кнопок операций */
+.my-btn.primary:active {
+    transform: scale(0.98); /* легкое уменьшение при нажатии */
+}
+
+/* селектор для кнопок второстепенных операций */
+.my-btn.secondary {
+    background: #1a1a1a; /* темно-серый фон */
+    color: #888888; /* серый текст для второстепенных кнопок */
+    border-color: #333; /* темная рамка */
+}
+
+/* hover для второстепенных кнопок */
+.my-btn.secondary:hover {
+    background: #1a1a1a; /* сохраняем фон */
+    border-color: #ffffff; /* белая рамка при наведении */
+    color: #ffffff; /* белый текст при наведении */
+}
+
+/* active для второстепенных кнопок */
+.my-btn.secondary:active {
+    transform: scale(0.98); /* легкое уменьшение при нажатии */
+}
+
+/* селектор для кнопки расчета выражения (=) */
+.my-btn.execute {
+    grid-column: span 2; /* кнопка занимает 2 колонки */
+    border-radius: 4px; /* скругление как у всех кнопок */
+}
+
+/* hover для кнопки равно */
+.my-btn.execute:hover {
+    background: #ffffff; /* белый фон при наведении */
+    color: #000000; /* черный текст */
+}
+
+/* active для кнопки равно */
+.my-btn.execute:active {
+    transform: scale(0.98); /* легкое уменьшение при нажатии */
+}
+
+/* селектор для поля вывода результата */
+.result {
+    width: 100%;
+    height: 70px;
+    margin-bottom: 20px;
+    padding: 0 10px;
+    box-sizing: border-box; /* чтобы padding не ломал ширину */
+    background: #000000; /* черный фон дисплея */
+    border: none; /* убираем все границы */
+    border-bottom: 2px solid #333; /* только нижняя граница для стиля терминала */
+    text-align: right; /* примагнитим текст к правой стороне */
+    color: #ffffff; /* белый текст */
+    font-size: 2.5rem; /* крупный размер шрифта */
+    font-family: 'Inter', monospace; /* моноширинный шрифт для цифр */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* выравнивание по правому краю */
+}
