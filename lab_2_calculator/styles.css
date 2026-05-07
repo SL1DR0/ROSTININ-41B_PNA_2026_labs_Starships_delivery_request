@@ -1,0 +1,193 @@
+/* опишем базовый стиль страницы и фона */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background: #000000; /* фон космоса */
+    overflow: hidden; /* скрываем полосы прокрутки для анимации */
+    font-family: 'Graphik', 'Segoe UI', Arial, Helvetica, sans-serif;
+}
+
+/* создаем звезды на фоне с помощью теней */
+.stars {
+    width: 2px;
+    height: 2px;
+    background: transparent;
+    box-shadow:
+        10vw 10vh #fff, 20vw 80vh #fff, 30vw 20vh #fff,
+        40vw 50vh #fff, 50vw 90vh #fff, 60vw 10vh #fff,
+        70vw 40vh #fff, 80vw 70vh #fff, 90vw 30vh #fff,
+        15vw 60vh #fff, 25vw 30vh #fff, 35vw 80vh #fff,
+        45vw 10vh #fff, 55vw 50vh #fff, 65vw 80vh #fff,
+        75vw 20vh #fff, 85vw 60vh #fff, 95vw 90vh #fff;
+    animation: starsAnim 100s linear infinite; /* медленное проплывание звезд */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* второй слой звезд поменьше для глубины */
+.stars2 {
+    width: 1px;
+    height: 1px;
+    background: transparent;
+    box-shadow:
+        12vw 15vh #aaa, 22vw 85vh #aaa, 32vw 25vh #aaa,
+        42vw 55vh #aaa, 52vw 95vh #aaa, 62vw 15vh #aaa,
+        72vw 45vh #aaa, 82vw 75vh #aaa, 92vw 35vh #aaa;
+    animation: starsAnim 150s linear infinite; /* более медленное движение */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+@keyframes starsAnim {
+    from { transform: translateY(0); }
+    to { transform: translateY(-100vh); } /* движение вверх */
+}
+
+/* опишем базовый стиль кнопки калькулятора */
+.my-btn {
+    width: 70px;                 /* задаем ширину кнопки */
+    height: 70px;                /* задаем высоту кнопки */
+    border-radius: 16px;         /* скругленные углы */
+    border: 1px solid #333;      /* тонкая техническая рамка */
+    background: #111111;         /* темно-серый фон кнопки */
+    color: #ffffff;              /* белый текст */
+    font-size: 1.5rem;           /* размер шрифта */
+    font-family: 'Graphik', 'Segoe UI', Arial, Helvetica, sans-serif; /* тот же шрифт что и везде */
+    cursor: pointer;             /* при наведении на кнопку курсор будет изменен со стрелки на 'указательный палец' */
+    user-select: none;           /* отключаем возможность выделить текст внутри кнопки */
+    transition: all 0.2s ease;   /* плавный переход для hover-эффектов */
+}
+
+/* hover - это состояние элемента, когда на него наведен курсор */
+.my-btn:hover {
+    background: #ffffff;         /* инверсия: белый фон при наведении */
+    color: #000000;              /* черный текст при наведении */
+    border-color: #ffffff;       /* белая рамка */
+}
+
+/* active - это состояние активации элемента. В случае кнопки - нажатие на нее */
+.my-btn:active {
+    transform: scale(0.95);      /* легкое уменьшение кнопки при нажатии */
+}
+
+/* селектор для кнопок первостепенных операций */
+.my-btn.primary {
+    background: #ffffff;         /* белый фон для основных операций */
+    color: #000000;              /* черный текст */
+    border-color: #ffffff;       /* белая рамка */
+}
+
+/* hover для кнопок операций */
+.my-btn.primary:hover {
+    background: #3d3bff;         /* синий акцент при наведении (стиль SpaceX) */
+    color: #ffffff;              /* белый текст */
+    border-color: #3d3bff;       /* синяя рамка */
+}
+
+/* селектор для кнопок второстепенных операций */
+.my-btn.secondary {
+    background: #1a1a1a;         /* темно-серый фон */
+    color: #888888;              /* серый текст для второстепенных кнопок */
+    border-color: #333;          /* темная рамка */
+}
+
+/* hover для второстепенных кнопок */
+.my-btn.secondary:hover {
+    color: #ffffff;              /* белый текст при наведении */
+    border-color: #ffffff;       /* белая рамка при наведении */
+}
+
+/* селектор для кнопки миссии на Марс */
+.my-btn.mars-btn {
+    background: #ff6b35;         /* оранжевый фон кнопки миссии */
+    color: #ffffff;              /* белый текст */
+    border-color: #ff6b35;       /* оранжевая рамка */
+    font-family: 'Graphik', 'Segoe UI', Arial, Helvetica, sans-serif; /* тот же шрифт */
+}
+
+/* hover для кнопки миссии */
+.my-btn.mars-btn:hover {
+    background: #ffffff;         /* белый фон при наведении */
+    color: #ff6b35;              /* оранжевый текст */
+    border-color: #ffffff;       /* белая рамка */
+}
+
+/* селектор для кнопки расчета выражения (=) */
+.my-btn.execute {
+    background: #3d3bff;         /* синий фон для кнопки равно */
+    color: #ffffff;              /* белый текст */
+    border-color: #3d3bff;       /* синяя рамка */
+}
+
+/* hover для кнопки равно */
+.my-btn.execute:hover {
+    background: #ffffff;         /* белый фон при наведении */
+    color: #3d3bff;              /* синий текст */
+    border-color: #ffffff;       /* белая рамка */
+}
+
+/* селектор для поля вывода результата */
+.result {
+    width: 320px;
+    min-height: 80px;
+    margin-bottom: 30px;
+    padding: 15px 20px;
+    box-sizing: border-box;      /* чтобы padding не ломал ширину */
+    background: #000000;         /* черный фон дисплея */
+    border: none;                /* убираем все границы */
+    border-bottom: 2px solid #333; /* только нижняя граница для стиля терминала */
+    text-align: right;           /* примагнитим текст к правой стороне */
+    color: #ffffff;              /* белый текст */
+    font-size: 1.3rem;             /* размер шрифта */
+    line-height: 1.6;            /* межстрочный интервал */
+    font-family: 'Graphik', 'Segoe UI', Arial, Helvetica, sans-serif; /* тот же шрифт что и у кнопок */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    white-space: pre-wrap;       /* разрешаем перенос строк */
+    word-wrap: break-word;       /* перенос длинных слов */
+}
+
+/* Сетка кнопок - используем Grid */
+.buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 70px); /* 4 колонки по 70px */
+    gap: 12px;                   /* отступы между кнопками */
+    justify-content: center;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 550px) {
+    .buttons-grid {
+        grid-template-columns: repeat(4, 60px);
+    }
+    .my-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 1.3rem;
+    }
+    .result {
+        width: 280px;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 450px) {
+    .buttons-grid {
+        grid-template-columns: repeat(4, 50px);
+    }
+    .my-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.1rem;
+    }
+    .result {
+        width: 240px;
+        font-size: 0.95rem;
+    }
+}
